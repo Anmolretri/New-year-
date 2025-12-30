@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Year Surprise 🐱</title>
+    <style>
+        /* CSS STYLING */
+        body {
+            background-color: #fdf6f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        #container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            max-width: 350px;
+            width: 90%;
+        }
+
+        .screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        img.cat-img {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #444;
+            line-height: 1.4;
+            margin-bottom: 25px;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            border: 2px solid #eee;
+            background: #fff;
+            border-radius: 12px;
+            transition: all 0.2s;
+            font-weight: bold;
+            color: #555;
+        }
+
+        button:hover {
+            background: #f8f8f8;
+            transform: translateY(-2px);
+            border-color: #ddd;
+        }
+
+        #gift-box {
+            font-size: 60px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            animation: pulse 1.5s infinite;
+        }
+
+        .polaroid {
+            background: white;
+            padding: 15px 15px 40px 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border: 1px solid #eee;
+            transform: rotate(-3deg);
+        }
+
+        .polaroid img {
+            width: 220px;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .polaroid p {
+            font-family: 'Cursive', sans-serif;
+            margin: 15px 0 0 0;
+            font-size: 1.5rem;
+            color: #ff4d6d;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <div id="screen1" class="screen">
+            <img class="cat-img" src="http://googleusercontent.com/image_collection/image_retrieval/13786049882947657616_0" alt="Cute Cat">
+            <p>Hey! I made something for you.<br>Will you see it? ✨</p>
+            <div class="btn-container">
+                <button onclick="nextScreen('screen3')">YES</button>
+                <button onclick="nextScreen('screen2')">NO</button>
+            </div>
+        </div>
+
+        <div id="screen2" class="screen hidden">
+            <img class="cat-img" src="http://googleusercontent.com/image_collection/image_retrieval/15681685490884005635_0" alt="Angry Cat">
+            <p>HOW DARE YOUUU! 🔫😤</p>
+            <button onclick="nextScreen('screen1')">Go Back & Say Yes!</button>
+        </div>
+
+        <div id="screen3" class="screen hidden">
+            <img class="cat-img" src="http://googleusercontent.com/image_collection/image_retrieval/3378774787202024824_0" alt="Happy Cat">
+            <p>Happy New Year my kuchupuchu!!<br>Click the gift for a surprise!</p>
+            <div id="gift-box" onclick="nextScreen('screen4')">🎁</div>
+        </div>
+
+        <div id="screen4" class="screen hidden">
+            <img class="cat-img" src="http://googleusercontent.com/image_collection/image_retrieval/13681022348875606039_0" alt="Cool Cat">
+            <div class="polaroid">
+                <img src="https://plus.unsplash.com/premium_photo-1664464039113-d48148388223?q=80&w=2000&auto=format&fit=crop" alt="Our Photo">
+                <p>I Love You ❤️</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // JAVASCRIPT LOGIC
+        function nextScreen(screenId) {
+            // Hide all screens
+            const screens = document.querySelectorAll('.screen');
+            screens.forEach(screen => {
+                screen.classList.add('hidden');
+            });
+
+            // Show the target screen
+            const targetScreen = document.getElementById(screenId);
+            targetScreen.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
